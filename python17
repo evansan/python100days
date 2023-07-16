@@ -1,0 +1,34 @@
+
+
+from getpass import getpass as input
+
+print("EPIC  👊✋✌  BATTLE")
+print("Select your move (R, P or S")
+
+p2_score = 0
+p1_score = 0
+
+
+while True:
+
+    p1=input("Player 1, your move!")
+    p2=input("Player 2, your move!")
+    result = p1 + p2
+
+    if p1 == p2:
+        print("It's a draw")
+
+    elif result == "RP" or result == "PS" or result == "SR":
+        p2_score += 1
+        print("player 2 scored", p2_score)
+        if p2_score >= 3:
+            print("Play 2 won!")
+            break
+
+    else:
+        p1_score += 1
+        print("player 1 scored", p1_score  )
+        if p1_score >= 3:
+            print("Play 1 won!")
+            break
+
