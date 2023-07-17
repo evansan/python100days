@@ -1,4 +1,4 @@
-import os, time
+import os, time, random
 
 def hp():
     import random
@@ -11,10 +11,11 @@ def strength():
     return strength
 
 while True:
-    char_name = input("What is the name of your character?: ")
+    name = input("What is the name of your character?: ")
+    type = input("What is the type of your character?: ")
 
     os.system("clear")
-    print(char_name)
+    print(name)
     time.sleep(1)
     print("HP: " + str(hp()))
     time.sleep(1)
