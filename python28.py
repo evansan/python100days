@@ -26,7 +26,6 @@ def print_score(name, hp, strength):
     print("Strength: ", strength)
     print()
 
-time.sleep(1)
 os.system("clear")
 print("battle time")
 
