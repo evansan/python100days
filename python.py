@@ -1,15 +1,42 @@
-myString = input("Type something > ")
+import random
 
-for letter in myString:
-    if letter.lower() == "b":
-        print('\033[33m', end='')  # yellow
-    elif letter.lower() == "g":
-        print('\033[32m', end='')  # green
-    elif letter.lower() == "p":
-        print('\033[35m', end='')  # purple
+def hangman():
+    word_list = ["python", "java", "hangman", "computer", "keyboard", "laptop", "headphones", "mouse"]
+    random_word = random.choice(word_list)
+    guessed_letters = []
+    attempts = 6
 
-    print(letter, end="")
-    print('\033[0m', end='')  # back to default
+    print("Let's play Hangman!")
+    print("_ " * len(random_word))
 
-# Reset color at end of string
-print('\033[0m')
+    while attempts > 0:
+        guess = input("\nPlease guess a letter: ").lower()
+
+        if len(guess) != 1:
+            print("Please enter only a single letter.")
+        elif guess in guessed_letters:
+            print("You have already guessed this letter.")
+        elif guess not in random_word:
+            print("Sorry, this letter is not in the word.")
+            attempts -= 1
+            print(f"You have {attempts} attempts remaining.")
+        else:
+            print("Good job, this letter is in the word!")
+            guessed_letters.append(guess)
+
+        word_status = ""
+        for letter in random_word:
+            if letter in guessed_letters:
+                word_status += letter + " "
+            else:
+                word_status += "_ "
+        
+        print(word_status)
+
+        if "_" not in word_status:
+            print("Congrats, you have won!")
+            return
+
+    print(f"Sorry, you have lost. The word was '{random_word}'.")
+
+hangman()
